@@ -27,3 +27,18 @@ iex(3)> StringPeeler.del_first_last_1("w")
 "length of a string should be more then two characters!"
 
 ```
+
+### To run `:timer`
+
+```
+❯ iex 1_string_peeler.exs
+
+Erlang/OTP 22 [erts-10.4.3] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
+warning: redefining module StringPeeler (current version loaded from Elixir.StringPeeler.beam)
+  1_string_peeler.exs:1
+Interactive Elixir (1.9.0) - press Ctrl+C to exit (type h() ENTER for help)
+
+iex(1)> :timer.tc(&StringPeeler.del_first_last_3/1, ["weeeeeeeeeeeeeeeeeew"])
+{59293, "eeeeeeeeeeeeeeeeee"}
+
+```
