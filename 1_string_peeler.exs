@@ -18,9 +18,6 @@ defmodule StringPeeler do
     String.slice(str, 1..-2)
   end
 
-  # :timer.tc(&StringPeeler.del_first_last/1, ["weeeeeeeeeeeeeeeeeew"])
-  # {8, "eeeeeeeeeeeeeeeeee"}
-
   # 2.
   # https://elixir-lang.org/getting-started/case-cond-and-if.html
   def del_first_last_2(str) do
@@ -30,9 +27,6 @@ defmodule StringPeeler do
       String.slice(str, 1..-2)
     end
   end
-
-  # :timer.tc(&StringPeeler.del_first_last_2/1, ["weeeeeeeeeeeeeeeeeew"])
-  # {10, "eeeeeeeeeeeeeeeeee"}
 
   # 3.
   # https://elixir-lang.org/getting-started/case-cond-and-if.html#if-and-unless
@@ -44,9 +38,6 @@ defmodule StringPeeler do
 
     String.slice(str, 1..-2)
   end
-
-  # :timer.tc(&StringPeeler.del_first_last_3/1, ["weeeeeeeeeeeeeeeeeew"])
-  # {7, "eeeeeeeeeeeeeeeeee"}
 
   # 4.
   # https://elixir-lang.org/getting-started/case-cond-and-if.html#toc
@@ -65,7 +56,54 @@ defmodule StringPeeler do
       true -> String.slice(str, 1..-2)
     end
   end
-
-  # :timer.tc(&StringPeeler.del_first_last_5/1, ["weeeeeeeeeeeeeeeeeew"])
-  # {8, "eeeeeeeeeeeeeeeeee"}
 end
+
+{time, solution} =
+  :timer.tc(fn ->
+    StringPeeler.del_first_last_1(
+      "weeeeeeeeeethsheisdhjfherorjrjk1166egdshsdbsdhjbsdhjbhjeeeeeeeeeew"
+    )
+  end)
+
+IO.puts("1. with MULTIPLE CLAUSES: #{solution}")
+IO.puts("#{time / 1000} ms")
+
+{time, solution} =
+  :timer.tc(fn ->
+    StringPeeler.del_first_last_2(
+      "weeeeeeeeeethsheisdhjfherorjrjk1166egdshsdbsdhjbsdhjbhjeeeeeeeeeew"
+    )
+  end)
+
+IO.puts("2. with IF ELSE statement: #{solution}")
+IO.puts("#{time / 1000} ms")
+
+{time, solution} =
+  :timer.tc(fn ->
+    StringPeeler.del_first_last_3(
+      "weeeeeeeeeethsheisdhjfherorjrjk1166egdshsdbsdhjbsdhjbhjeeeeeeeeeew"
+    )
+  end)
+
+IO.puts("3. with UNLESS and RAISE: #{solution}")
+IO.puts("#{time / 1000} ms")
+
+{time, solution} =
+  :timer.tc(fn ->
+    StringPeeler.del_first_last_4(
+      "weeeeeeeeeethsheisdhjfherorjrjk1166egdshsdbsdhjbsdhjbhjeeeeeeeeeew"
+    )
+  end)
+
+IO.puts("4. with CASE statement: #{solution}")
+IO.puts("#{time / 1000} ms")
+
+{time, solution} =
+  :timer.tc(fn ->
+    StringPeeler.del_first_last_5(
+      "weeeeeeeeeethsheisdhjfherorjrjk1166egdshsdbsdhjbsdhjbhjeeeeeeeeeew"
+    )
+  end)
+
+IO.puts("5. with COND statement: #{solution}")
+IO.puts("#{time / 1000} ms")
